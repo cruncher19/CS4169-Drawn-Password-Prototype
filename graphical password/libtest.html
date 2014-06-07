@@ -12,7 +12,7 @@
 		window.onload = function() {
 			var dc = new drawingCanvas("canvasDiv", 600, 400);
 
-			document.getElementById('canvasDiv').addEventListener('contextmenu', function(ev) {
+			document.getElementById('#canvasDiv').addEventListener('contextmenu', function(ev) {
 			    console.log(dc.getPositions());
 			}, false);
 		}
