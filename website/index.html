@@ -8,11 +8,35 @@
         var facebookGrid = new drawingCanvas("facebookGrid", 300, 300);
         var linkedinGrid = new drawingCanvas("linkedinGrid", 300, 300);
         var scotiabankGrid = new drawingCanvas("scotiabankGrid", 300, 300);
+        document.getElementById('facebookGridSubmit').addEventListener('click', function() {
+        	var drawingInfo = facebookGrid.getPositions();
+        	console.log(drawingInfo);
+        	// Do some calculations to get a password from the drawingInfo
+        	// probably want to  put your code into a function, either in its own file
+        	// or as a part of the drawingCanvas itself, if you go this route you should 
+        	// write it as an addon to the drawingCanvas prototype
+        }, false);
+        document.getElementById('linkedinGridSubmit').addEventListener('click', function() {
+        	var drawingInfo = linkedinGrid.getPositions();
+        	console.log(drawingInfo);
+        	// Do some calculations to get a password from the drawingInfo
+        	// probably want to  put your code into a function, either in its own file
+        	// or as a part of the drawingCanvas itself, if you go this route you should 
+        	// write it as an addon to the drawingCanvas prototype
+        }, false);
+        document.getElementById('scotiabankGridSubmit').addEventListener('click', function() {
+        	var drawingInfo = scotiabankGrid.getPositions();
+        	console.log(drawingInfo);
+        	// Do some calculations to get a password from the drawingInfo
+        	// probably want to  put your code into a function, either in its own file
+        	// or as a part of the drawingCanvas itself, if you go this route you should 
+        	// write it as an addon to the drawingCanvas prototype
+        }, false);
     }
 </script>
 </head>
 <body>
-<form method="post" name="pform" action="login.php">
+<!-- <form method="post" name="pform" action="login.php"> -->
   <div id="header">
    <ul> 
     <li>Home</li>
@@ -38,17 +62,17 @@
 	    <div id="left"> <img src="img/facebook.jpg"><br>
 	      GRID HERE<br>
 	      <div id="facebookGrid"></div>
-	      <input type="submit" name="login1" value="Login">
+	      <input id="facebookGridSubmit" type="submit" name="login1" value="Login">
 	      </div>
 	    <div id="middle"><img src="img/linkedin.jpg"><br>
 	      GRID HERE<br>
 	      <div id="linkedinGrid"></div>
-	      <input type="submit" name="login2" value="Login">
+	      <input id="linkedinGridSubmit" type="submit" name="login2" value="Login">
 	      </div>
 	    <div id="right"><img src="img/scotiabank.jpg"><br>
 	      GRID HERE<br>
 	      <div id="scotiabankGrid"></div>
-	      <input type="submit" name="login3" value="Login">
+	      <input id="scotiabankGridSubmit" type="submit" name="login3" value="Login">
 	     </div>
 	    </div>
 </div></div>
@@ -65,7 +89,7 @@
 <br><br><br>
 <center>CSCI 4169/6307 Usable Security and Privacy 2014</center>
 
-</form>
+<!-- </form> -->
 </body>
 </html>
 
