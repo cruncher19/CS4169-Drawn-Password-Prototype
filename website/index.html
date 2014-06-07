@@ -4,11 +4,18 @@
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/drawingCanvas.js"></script>
 <script type="text/javascript">
+    function validatePassword() {
+
+    }
+    function login() {
+      
+    }
     window.onload = function() {
         var facebookGrid = new drawingCanvas("facebookGrid", 300, 300);
         var linkedinGrid = new drawingCanvas("linkedinGrid", 300, 300);
         var scotiabankGrid = new drawingCanvas("scotiabankGrid", 300, 300);
 
+        // Event listeners for the facebook grid
         document.getElementById('facebookGridSubmit').addEventListener('click', function() {
         	var drawingInfo = facebookGrid.getPositions();
         	var password = facebookGrid.generatePassword();
@@ -17,6 +24,7 @@
             facebookGrid.clearDrawing();
         }, false);
 
+        // Event listeners for the linkedin grid
         document.getElementById('linkedinGridSubmit').addEventListener('click', function() {
         	var drawingInfo = linkedinGrid.getPositions();
         	var password = linkedinGrid.generatePassword();
@@ -25,6 +33,7 @@
             linkedinGrid.clearDrawing();
         }, false);
 
+        // Event listeners for the scotiabank grid
         document.getElementById('scotiabankGridSubmit').addEventListener('click', function() {
         	var drawingInfo = scotiabankGrid.getPositions();
         	var password = scotiabankGrid.generatePassword();

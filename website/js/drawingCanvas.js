@@ -195,7 +195,7 @@ drawingCanvas.prototype.generatePassword = function() {
 
 	// As ClickX and ClickY should both have the same number of items, either array could have
 	// been used to count
-    for (var i = 0; i < this.clickX.length; i ++)
+    for (var i = 0; i < this.clickX.length; i+=10)
     {
 		// Determines the quadrant of the current (X, Y) coordinate. Returns a 2-element array containing
 		// the vertical quadrant and horizontal quadrant
