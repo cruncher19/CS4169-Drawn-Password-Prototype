@@ -65,3 +65,17 @@ body {
       margin-right:auto;
 
 }
+
+canvas {
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none; 
+}
+
+.gridCol{
+    text-align: center;
+}
