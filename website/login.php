@@ -2,10 +2,21 @@
 <?php
 
 $l = 0; #inital state of login success
-$uname = trim($_GET["u"]);
-$passId = trim($_GET["p"]);
-$pwd = trim($_GET["pwd"]);
+$uname = $_POST["userName"];
+$passId = 0;
 $r = "fail";
+
+if (isset($_POST["login1"])) {
+  $passId = 1;
+#change later when grid done
+$pwd = $_GET["userPwd"];
+}
+else if (isset($_POST["login2"])) {
+  $passId = 2;
+}
+else if (isset($_POST["login3"])) {
+  $passId = 3;
+}
 
 $u = "";
 $p = "";
@@ -13,11 +24,13 @@ $p = "";
 #read passwords
 $handle = fopen("passwords.csv", "r");
 if ($handle) {
-  while (($line = fgets($handle)) !== false && $l==0) {
-    $a = explode(',', $line);
-      if (($a[0] == $passId) && ($a[1] == $uname) && (trim($a[2]) == $pwd)) {
-      $l = 1;
+  while (($line = fgets($handle)) !== false) {
+   $a = explode(',', $line);
+   $parts = explode('.', $string);
+   if ($a[1] == $id && $a[2] = $uname && $a[3] = $pwd) {
+   $r = "success";
    }
+
   }
 } else {
   // error opening the file.
@@ -25,13 +38,13 @@ if ($handle) {
 fclose($handle);
 
 #record activities 
-if ($l == 1) $r = "success";
-
 $file = fopen("records.csv","a");
 $s =date('Y-m-d H:i:s').",".$uname.",".$passId.",".$r."\n";
 fwrite($file,$s);
 fclose($file);
 
-#HOW TO PASS VALIDATION OUTCOME TO BRAD? $l or $r?
-print 'done';
+
+#redirect back to login at the end
+if ($l == 1) header('Location: index.html');
+print "done";
 ?>

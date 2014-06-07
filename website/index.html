@@ -10,28 +10,24 @@
         var scotiabankGrid = new drawingCanvas("scotiabankGrid", 300, 300);
         document.getElementById('facebookGridSubmit').addEventListener('click', function() {
         	var drawingInfo = facebookGrid.getPositions();
-        	console.log(drawingInfo);
-        	// Do some calculations to get a password from the drawingInfo
-        	// probably want to  put your code into a function, either in its own file
-        	// or as a part of the drawingCanvas itself, if you go this route you should 
-        	// write it as an addon to the drawingCanvas prototype
+            var password = facebookGrid.generatePassword();
         }, false);
         document.getElementById('linkedinGridSubmit').addEventListener('click', function() {
         	var drawingInfo = linkedinGrid.getPositions();
-        	console.log(drawingInfo);
-        	// Do some calculations to get a password from the drawingInfo
-        	// probably want to  put your code into a function, either in its own file
-        	// or as a part of the drawingCanvas itself, if you go this route you should 
-        	// write it as an addon to the drawingCanvas prototype
+        	var password = linkedinGrid.generatePassword();
         }, false);
         document.getElementById('scotiabankGridSubmit').addEventListener('click', function() {
         	var drawingInfo = scotiabankGrid.getPositions();
-        	console.log(drawingInfo);
-        	// Do some calculations to get a password from the drawingInfo
-        	// probably want to  put your code into a function, either in its own file
-        	// or as a part of the drawingCanvas itself, if you go this route you should 
-        	// write it as an addon to the drawingCanvas prototype
+        	var password = scotiabankGrid.generatePassword();
         }, false);
+    }
+
+    function validatePassword() {
+
+    }
+
+    function storePassword() {
+    	
     }
 </script>
 </head>
@@ -60,14 +56,17 @@
 
 	  <div id="row">
 	    <div class="gridCol" id="left"> <img src="img/facebook.jpg"><br>
+	      GRID HERE<br>
 	      <div id="facebookGrid"></div>
 	      <input id="facebookGridSubmit" type="submit" name="login1" value="Login">
 	      </div>
 	    <div class="gridCol" id="middle"><img src="img/linkedin.jpg"><br>
+	      GRID HERE<br>
 	      <div id="linkedinGrid"></div>
 	      <input id="linkedinGridSubmit" type="submit" name="login2" value="Login">
 	      </div>
 	    <div class="gridCol" id="right"><img src="img/scotiabank.jpg"><br>
+	      GRID HERE<br>
 	      <div id="scotiabankGrid"></div>
 	      <input id="scotiabankGridSubmit" type="submit" name="login3" value="Login">
 	     </div>
@@ -75,7 +74,7 @@
 </div></div>
 <br>
 <div id="container">
-<a href="new.html">New user? Sign up</a>
+<a href="">Create a password</a>
 </div>
 </div>
 

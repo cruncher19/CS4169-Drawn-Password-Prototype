@@ -1,1 +1,0 @@
-0 4 * * *  mail -s 'USP project daily stats' tanjakeselj@gmail.com </home/usp/public_html/records.csv

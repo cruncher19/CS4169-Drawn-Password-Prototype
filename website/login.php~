@@ -2,11 +2,8 @@
 <?php
 
 $l = 0; #inital state of login success
-$uname = $_POST["u"];
-$passId = $_POST["p"];
-$pwd = $_POST["pwd"];
-$r = "fail";
-
+$uname = $_POST["userName"];
+$pwd = $_GET["userPwd"];
 $u = "";
 $p = "";
 
@@ -14,10 +11,12 @@ $p = "";
 $handle = fopen("passwords.csv", "r");
 if ($handle) {
   while (($line = fgets($handle)) !== false) {
-    $a = explode(',', $line);
-    $parts = explode('.', $string);
-    if ($a[1] == $id && $a[2] = $uname && $a[3] = $pwd) {
-      $r = "success";
+   $a = explode(',', $line);
+   $parts = explode('.', $string);
+   print $a[1].'<br>';
+   print $uname;
+   if ($uname == $a[1]) {
+     print $line;
    }
   }
 } else {
@@ -25,11 +24,16 @@ if ($handle) {
 } 
 fclose($handle);
 
-
 #record activities 
 $file = fopen("records.csv","a");
-$s =date('Y-m-d H:i:s').",".$uname.",".$passId.",".$r."\n";
-fwrite($file,$s);
+fwrite($file,"User");
 fclose($file);
-#HOW TO PASS VALIDATION OUTCOME TO BRAD?
+
+#write date $gd = getdate(); $gd["mon"]; $gd["mday"]; $gd["year"]
+
+
+
+#redirect back to login at the end
+if ($l == 1) header('Location: index.html');
+
 ?>
