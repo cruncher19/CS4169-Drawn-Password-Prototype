@@ -15,6 +15,7 @@ function drawingCanvas(divId, canvasWidth, canvasHeight){
     this.clickY    = new Array();
     this.clickDrag = new Array();
     this.clickTime = new Array();
+    this.startTime = undefined;
     this.paint;
 
     var canvasDiv = document.getElementById(divId);
@@ -43,6 +44,9 @@ function drawingCanvas(divId, canvasWidth, canvasHeight){
         $('#'+divId+' > #canvas').mousedown(function(e){
             var mouseX = e.pageX - this.offsetLeft;
             var mouseY = e.pageY - this.offsetTop;
+            if(!self.startTime) {                
+                self.startTime = new Date();
+            }
                 
             self.paint = true;
             addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
@@ -126,6 +130,7 @@ function drawingCanvas(divId, canvasWidth, canvasHeight){
 }
 
 drawingCanvas.prototype.clearDrawing = function() {
+    this.startTime = undefined;
     this.clickX = [];
     this.clickY = [];
     this.clickDrag = [];
@@ -172,6 +177,12 @@ drawingCanvas.prototype.clearDrawing = function() {
         this.context.closePath();
         this.context.stroke();
     }
+}
+
+// Returns the time between the start of the drawing and the current time
+// IN MILLISECONDS
+drawingCanvas.prototype.getDrawingDuration = function() {
+    return Math.abs(new Date() - this.startTime);
 }
 
 drawingCanvas.prototype.getPositions = function() {
