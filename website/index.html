@@ -8,7 +8,7 @@
 
     }
     function login() {
-      
+
     }
     window.onload = function() {
         var facebookGrid = new drawingCanvas("facebookGrid", 300, 300);
@@ -68,21 +68,30 @@
 	<div id="row">
 
 	  <div id="row">
-	    <div class="gridCol" id="left"> <img src="img/facebook.jpg"><br>
-	      <div id="facebookGrid"></div>
-	      <input id="facebookGridSubmit" type="submit" name="login1" value="Login">
-          <input id="facebookGridClear" type="submit" value="Clear">
-	      </div>
-	    <div class="gridCol" id="middle"><img src="img/linkedin.jpg"><br>
-	      <div id="linkedinGrid"></div>
-	      <input id="linkedinGridSubmit" type="submit" name="login2" value="Login">
-          <input id="linkedinGridClear" type="submit" value="Clear">
-	      </div>
-	    <div class="gridCol" id="right"><img src="img/scotiabank.jpg"><br>
-	      <div id="scotiabankGrid"></div>
-	      <input id="scotiabankGridSubmit" type="submit" name="login3" value="Login">
-          <input id="scotiabankGridClear" type="submit" value="Clear">
-	     </div>
+	    <div class="gridCol" id="left"> 
+        <div class="indicator">
+          <img class="passImage" src="img/facebook.jpg"><br>
+        </div>
+        <input id="facebookGridClear" type="submit" value="Clear">
+        <div id="facebookGrid"></div>
+        <input id="facebookGridSubmit" type="submit" name="login1" value="Login">
+      </div>
+	    <div class="gridCol" id="middle">
+        <div class="indicator">
+          <img class="passImage" src="img/linkedin.jpg"><br>
+        </div>
+        <input id="linkedinGridClear" type="submit" value="Clear">
+        <div id="linkedinGrid"></div>
+        <input id="linkedinGridSubmit" type="submit" name="login2" value="Login">
+      </div>
+	    <div class="gridCol" id="right">
+        <div class="indicator">
+          <img class="passImage" src="img/scotiabank.jpg"><br>
+        </div>
+        <input id="scotiabankGridClear" type="submit" value="Clear">
+        <div id="scotiabankGrid"></div>
+        <input id="scotiabankGridSubmit" type="submit" name="login3" value="Login">
+      </div>
 	    </div>
 </div></div>
 <br>
