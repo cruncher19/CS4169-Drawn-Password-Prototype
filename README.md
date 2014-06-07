@@ -48,12 +48,11 @@ so to acces the x position for point zero you would do:
 ```javascript
 xpos = dc[0]['x'];
 ```
-```javascript
 y:
 ```javascript
 ypos = dc[0]['y'];
 ```
-```javascript
 time:
+```javascript
 time = dc[0]['time'];
 ```
