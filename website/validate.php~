@@ -25,11 +25,5 @@ if ($handle) {
 } 
 fclose($handle);
 
-
-#record activities 
-$file = fopen("records.csv","a");
-$s =date('Y-m-d H:i:s').",".$uname.",".$passId.",".$r."\n";
-fwrite($file,$s);
-fclose($file);
 #HOW TO PASS VALIDATION OUTCOME TO BRAD?
 ?>

@@ -1,5 +1,4 @@
-date&time,userName,passId,sucess/fail
-2014-06-07 15:39:01,tanja,1,fail
-2014-06-07 17:17:09,,1,fail
-2014-06-07 17:17:12,,2,fail
-2014-06-07 17:17:15,,3,fail
+timestamp,user,passId,sucess/fail
+2014-06-13 16:59:40,tanja,1,fail
+2014-06-13 16:59:51,tanja,1,success
+

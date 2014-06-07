@@ -36,7 +36,7 @@ body {
         color:#0B3861;;
         background:#E0ECF8;
         text-align:left;
-        width:70%;
+        width:90%;
         margin-left:auto;
         margin-right:auto;
 	padding:0;
@@ -70,10 +70,6 @@ canvas {
     background-color: #FFFFFF;
     border-style: solid;
     border-width: 1px;
-    -moz-user-select: none; 
-    -khtml-user-select: none; 
-    -webkit-user-select: none; 
-    -o-user-select: none; 
 }
 
 .gridCol{

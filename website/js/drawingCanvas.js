@@ -32,6 +32,7 @@ function drawingCanvas(divId, canvasWidth, canvasHeight){
 
     this.context = this.canvas.getContext("2d");
     var self = this;
+    drawGrid();
     addCanvasListeners(divId);    
 
 
@@ -78,6 +79,9 @@ function drawingCanvas(divId, canvasWidth, canvasHeight){
     function redraw(){
         self.context.clearRect(0, 0, self.context.canvas.width, self.context.canvas.height); // Clears the canvas
 
+        var defaultStrokeStyle   = self.context.strokeStyle;
+        var defaultLineJoin      = self.context.lineJoin;
+        var defaultLineWidth     = self.context.lineWidth;
         self.context.strokeStyle = "#df4b26";
         self.context.lineJoin    = "round";
         self.context.lineWidth   = 5;
@@ -93,6 +97,31 @@ function drawingCanvas(divId, canvasWidth, canvasHeight){
             self.context.closePath();
             self.context.stroke();
         }
+        self.context.strokeStyle = defaultStrokeStyle;
+        self.context.lineJoin    = defaultLineJoin;
+        self.context.lineWidth   = defaultLineWidth;
+        drawGrid();
+    }
+
+    function drawGrid(){
+        var width = self.canvas.width;
+        var height = self.canvas.height;
+        
+        for(var i=1; i<5; i++) {
+            // draw some vertical lines
+            self.context.beginPath();
+            self.context.moveTo(i*(width/5), 0);
+            self.context.lineTo(i*(width/5), height);
+            self.context.closePath();
+            self.context.stroke();
+
+            // draw some horizontal lines
+            self.context.beginPath();
+            self.context.moveTo(0, i*(height/5));
+            self.context.lineTo(width, i*(height/5));
+            self.context.closePath();
+            self.context.stroke();
+        }
     }
 }
 
@@ -103,6 +132,10 @@ drawingCanvas.prototype.clearDrawing = function() {
     this.clickTime = [];
     this.paint = false;
     this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height); // Clears the canvas
+
+    var defaultStrokeStyle   = this.context.strokeStyle;
+    var defaultLineJoin      = this.context.lineJoin;
+    var defaultLineWidth     = this.context.lineWidth;
     this.context.strokeStyle = "#df4b26";
     this.context.lineJoin    = "round";
     this.context.lineWidth   = 5;
@@ -115,6 +148,27 @@ drawingCanvas.prototype.clearDrawing = function() {
             this.context.moveTo(this.clickX[i]-1, this.clickY[i]);
         }
         this.context.lineTo(this.clickX[i], this.clickY[i]);
+        this.context.closePath();
+        this.context.stroke();
+    }
+    this.context.strokeStyle = defaultStrokeStyle;
+    this.context.lineJoin    = defaultLineJoin;
+    this.context.lineWidth   = defaultLineWidth;
+    var width = this.canvas.width;
+    var height = this.canvas.height;
+    
+    for(var i=1; i<5; i++) {
+        // draw some vertical lines
+        this.context.beginPath();
+        this.context.moveTo(i*(width/5), 0);
+        this.context.lineTo(i*(width/5), height);
+        this.context.closePath();
+        this.context.stroke();
+
+        // draw some horizontal lines
+        this.context.beginPath();
+        this.context.moveTo(0, i*(height/5));
+        this.context.lineTo(width, i*(height/5));
         this.context.closePath();
         this.context.stroke();
     }
