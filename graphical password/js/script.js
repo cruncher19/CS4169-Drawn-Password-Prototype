@@ -1,103 +1,109 @@
 // Credit to: http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/
 //            for the basic drawing code
-var canvasWidth  = "800px";
-var canvasHeight = "600px";  
 
+// divId = the ID of the div the canvas will be inserted into
+// canvasWidth = the width in pixels of the canvas
+// canvasHeight = theheight in pixels of the canvas
 
-// This is our main source of information about the password drawing
-// We'll likely need to do some kind of smoothing to make the algorithm more tolerant
-// This data is probably too high resolution to go straight into the password generation algorithm
-// clickX[i], clickY[i] and clickTime[i] give the x,y and time for point i on the drawing
-// Can use change in clickTime to find acceleration
-var clickX    = new Array();
-var clickY    = new Array();
-var clickDrag = new Array();
-var clickTime = new Array();
-var paint;
+function drawingCanvas(divId, canvasWidth, canvasHeight){
+    // This is our main source of information about the password drawing
+    // We'll likely need to do some kind of smoothing to make the algorithm more tolerant
+    // This data is probably too high resolution to go straight into the password generation algorithm
+    // clickX[i], clickY[i] and clickTime[i] give the x,y and time for point i on the drawing
+    // Can use change in clickTime to find acceleration
+    this.clickX    = new Array();
+    this.clickY    = new Array();
+    this.clickDrag = new Array();
+    this.clickTime = new Array();
+    this.paint;
 
-window.onload = function() {
-
-
-
-    var canvas = setupCanvas();
-    context = canvas.getContext("2d");
-    addCanvasListeners();
-    
-
-    // add a canvas element to #canvasDiv, return the canvas element
-    function setupCanvas() {
-        var canvasDiv = document.getElementById('canvasDiv');
-        if(!canvasDiv) {
-            throw "Error: #canvasDiv not found";
-        }
-        var canvas = document.createElement('canvas');
-        canvas.setAttribute('width', canvasWidth);
-        canvas.setAttribute('height', canvasHeight);
-        canvas.setAttribute('id', 'canvas');
-        canvasDiv.appendChild(canvas);
-        if(typeof G_vmlCanvasManager != 'undefined') {
-            canvas = G_vmlCanvasManager.initElement(canvas);
-        }
-        
-        return canvas;
+    var canvasDiv = document.getElementById(divId);
+    if(!canvasDiv) {
+        throw "Error: #canvasDiv not found";
+    }
+    this.canvas = document.createElement('canvas');
+    this.canvas.setAttribute('width', canvasWidth);
+    this.canvas.setAttribute('height', canvasHeight);
+    this.canvas.setAttribute('id', 'canvas');
+    canvasDiv.appendChild(this.canvas);
+    if(typeof G_vmlCanvasManager != 'undefined') {
+        this.canvas = G_vmlCanvasManager.initElement(this.canvas);
     }
 
+    this.context = this.canvas.getContext("2d");
+    var self = this;
+    addCanvasListeners(divId);    
+
+
+
     // Add mouse event listeners to the canvas
-    function addCanvasListeners() {
-        $('#canvas').mousedown(function(e){
+    function addCanvasListeners(divId) {
+        console.log('.'+divId+' > #canvas');
+        $('#'+divId+' > #canvas').mousedown(function(e){
             var mouseX = e.pageX - this.offsetLeft;
             var mouseY = e.pageY - this.offsetTop;
                 
-            paint = true;
+            self.paint = true;
             addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
             redraw();
         });
 
         // mouse moves, push the change onto the click arrays
-        $('#canvas').mousemove(function(e){
-            if(paint){
+        $('#'+divId+' > #canvas').mousemove(function(e){
+            if(self.paint){
                 addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
                 redraw();
             }
         });
 
         // mouse up, stop painting
-        $('#canvas').mouseup(function(e){
-            paint = false;
+        $('#'+divId+' > #canvas').mouseup(function(e){
+            self.paint = false;
         });
 
         // mouse leaves the canvas, stop painting
-        $('#canvas').mouseleave(function(e){
-          paint = false;
+        $('#'+divId+' > #canvas').mouseleave(function(e){
+          self.paint = false;
         });
     }
 
     function addClick(x, y, dragging) {
-      clickX.push(x);
-      clickY.push(y);
-      clickDrag.push(dragging);
+      self.clickX.push(x);
+      self.clickY.push(y);
+      self.clickDrag.push(dragging);
       var d = new Date();
-      clickTime.push(d.getTime());
+      self.clickTime.push(d.getTime());
     }
 
     function redraw(){
-        context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
+        self.context.clearRect(0, 0, self.context.canvas.width, self.context.canvas.height); // Clears the canvas
 
-        context.strokeStyle = "#df4b26";
-        context.lineJoin    = "round";
-        context.lineWidth   = 5;
+        self.context.strokeStyle = "#df4b26";
+        self.context.lineJoin    = "round";
+        self.context.lineWidth   = 5;
             
-        for(var i=0; i < clickX.length; i++) {        
-            context.beginPath();
-            if(clickDrag[i] && i){
-                context.moveTo(clickX[i-1], clickY[i-1]);
+        for(var i=0; i < self.clickX.length; i++) {        
+            self.context.beginPath();
+            if(self.clickDrag[i] && i){
+                self.context.moveTo(self.clickX[i-1], self.clickY[i-1]);
             }else{
-                context.moveTo(clickX[i]-1, clickY[i]);
+                self.context.moveTo(self.clickX[i]-1, self.clickY[i]);
             }
-            context.lineTo(clickX[i], clickY[i]);
-            context.closePath();
-            context.stroke();
+            self.context.lineTo(self.clickX[i], self.clickY[i]);
+            self.context.closePath();
+            self.context.stroke();
         }
     }
+}
 
+drawingCanvas.prototype.getPositions = function() {
+    var positions = new Array();
+    for(var i=0; i < this.clickX.length; i++) {
+        var currPos = new Array();
+        currPos['x'] = this.clickX[i];
+        currPos['y'] = this.clickY[i];
+        currPos['time'] = this.clickTime[i];
+        positions.push(currPos);
+    }
+    return positions;
 }

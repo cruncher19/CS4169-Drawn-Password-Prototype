@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Graphical Password Prototype</title>
+	<title>libtest</title>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <link media="all" type="text/css" href="./css/base.css" rel="stylesheet"></link>
@@ -9,22 +9,16 @@
     <link media="screen and (min-width: 1236px)" href="./css/1236_grid.css" rel="stylesheet"></link>
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
-        window.onload = function() {
-            var dc = new drawingCanvas("canvasDiv", 600, 400);
-            var drawingInfo = dc.getPositions();
-        }
-    </script>
+		window.onload = function() {
+			var dc = new drawingCanvas("canvasDiv", 600, 400);
+
+			document.getElementById('canvasDiv').addEventListener('contextmenu', function(ev) {
+			    console.log(dc.getPositions());
+			}, false);
+		}
+	</script>
 </head>
 <body>
-    <div class="grid">
-        <div class="slot-0">
-            <!-- Gutter -->
-        </div>
-        <div id="canvasDiv" class="slot-1-2-3-4">
-        </div>
-        <div class="slot-5">
-            <!-- Gutter -->
-        </div>
-    </div>
+	<div id="canvasDiv"></div>
 </body>
 </html>
