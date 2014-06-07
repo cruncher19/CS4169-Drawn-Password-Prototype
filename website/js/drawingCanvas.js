@@ -96,6 +96,30 @@ function drawingCanvas(divId, canvasWidth, canvasHeight){
     }
 }
 
+drawingCanvas.prototype.clearDrawing = function() {
+    this.clickX = [];
+    this.clickY = [];
+    this.clickDrag = [];
+    this.clickTime = [];
+    this.paint = false;
+    this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height); // Clears the canvas
+    this.context.strokeStyle = "#df4b26";
+    this.context.lineJoin    = "round";
+    this.context.lineWidth   = 5;
+        
+    for(var i=0; i < this.clickX.length; i++) {        
+        this.context.beginPath();
+        if(this.clickDrag[i] && i){
+            this.context.moveTo(this.clickX[i-1], this.clickY[i-1]);
+        }else{
+            this.context.moveTo(this.clickX[i]-1, this.clickY[i]);
+        }
+        this.context.lineTo(this.clickX[i], this.clickY[i]);
+        this.context.closePath();
+        this.context.stroke();
+    }
+}
+
 drawingCanvas.prototype.getPositions = function() {
     var positions = new Array();
     for(var i=0; i < this.clickX.length; i++) {

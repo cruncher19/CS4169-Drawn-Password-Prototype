@@ -10,24 +10,28 @@
         var scotiabankGrid = new drawingCanvas("scotiabankGrid", 300, 300);
         document.getElementById('facebookGridSubmit').addEventListener('click', function() {
         	var drawingInfo = facebookGrid.getPositions();
-            var password = facebookGrid.generatePassword();
+        	console.log(drawingInfo);
+        	// Do some calculations to get a password from the drawingInfo
+        	// probably want to  put your code into a function, either in its own file
+        	// or as a part of the drawingCanvas itself, if you go this route you should 
+        	// write it as an addon to the drawingCanvas prototype
         }, false);
         document.getElementById('linkedinGridSubmit').addEventListener('click', function() {
         	var drawingInfo = linkedinGrid.getPositions();
-        	var password = linkedinGrid.generatePassword();
+        	console.log(drawingInfo);
+        	// Do some calculations to get a password from the drawingInfo
+        	// probably want to  put your code into a function, either in its own file
+        	// or as a part of the drawingCanvas itself, if you go this route you should 
+        	// write it as an addon to the drawingCanvas prototype
         }, false);
         document.getElementById('scotiabankGridSubmit').addEventListener('click', function() {
         	var drawingInfo = scotiabankGrid.getPositions();
-        	var password = scotiabankGrid.generatePassword();
+        	console.log(drawingInfo);
+        	// Do some calculations to get a password from the drawingInfo
+        	// probably want to  put your code into a function, either in its own file
+        	// or as a part of the drawingCanvas itself, if you go this route you should 
+        	// write it as an addon to the drawingCanvas prototype
         }, false);
-    }
-
-    function validatePassword() {
-
-    }
-
-    function storePassword() {
-    	
     }
 </script>
 </head>
@@ -74,7 +78,7 @@
 </div></div>
 <br>
 <div id="container">
-<a href="">Create a password</a>
+<a href="">New user? Sign up</a>
 </div>
 </div>
 

@@ -1,0 +1,36 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<form method="post" name="pform" action="quest.php">
+  <div id="header">
+   <ul> 
+    <li><a href="index.html" style="color:white;text-decoration:none;">Home</a></li>
+    <li>Questionnaire</li>
+    <li><a href="contact.html" style="color:white;text-decoration:none;">Contact</a></li>
+   </ul>
+  </div>
+<div id="content">
+<br>
+<center><div style="font-weight:bold;font-size:1.4em;">CSCI 4169/6307 Usable Security and Privacy</div></center>
+<br>
+<center><div style="font-weight:bold;size:1.2em;">Usability of grid drawing passwords</div></center>
+<br><br>
+<center><table width="100%">
+<tr>
+ <td align="left">
+1. This type of passwords is usable?<br>
+Strongly disagree<input type="radio" name="q1" value="stronglyDisagree">&nbsp;
+Disagree<input type="radio" name="q2" value="disagree">&nbsp;
+I don't know<input type="radio" name="q3" value="dontKnow">&nbsp;
+Agree<input type="radio" name="q4" value="Agree">&nbsp;
+Strongly Agree<input type="radio" name="q2" value="stronglyAgree">&nbsp;
+<br>
+ </td>
+</table></center>
+<br><br><br>
+<center>CSCI 4169/6307 Usable Security and Privacy 2014</center>
+
+</form>
+</html>
+
