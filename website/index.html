@@ -1,0 +1,71 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="style.css">
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/drawingCanvas.js"></script>
+<script type="text/javascript">
+    window.onload = function() {
+        var facebookGrid = new drawingCanvas("facebookGrid", 300, 300);
+        var linkedinGrid = new drawingCanvas("linkedinGrid", 300, 300);
+        var scotiabankGrid = new drawingCanvas("scotiabankGrid", 300, 300);
+    }
+</script>
+</head>
+<body>
+<form method="post" name="pform" action="login.php">
+  <div id="header">
+   <ul> 
+    <li>Home</li>
+    <li><a href="quest.html" style="color:white;text-decoration:none;">Questionnaire</a></li>
+    <li><a href="contact.html" style="color:white;text-decoration:none;">Contact</a></li>
+   </ul>
+  </div>
+<div id="content">
+<br>
+<center><div style="font-weight:bold;font-size:1.4em;">CSCI 4169/6307 Usable Security and Privacy</div></center>
+<br>
+<center><div style="font-weight:bold;size:1.2em;">Usability of grid drawing passwords</div></center>
+<br><br>
+<div id="container">
+  <div id="row">
+    <div id="middle">
+      Please login using your grid passwords<br><br>
+      Username: <input type="text" name="userName" value="">
+      <div id="container">
+	<div id="row">
+
+	  <div id="row">
+	    <div id="left"> <img src="img/facebook.jpg"><br>
+	      GRID HERE<br>
+	      <div id="facebookGrid"></div>
+	      <input type="submit" name="login1" value="Login">
+	      </div>
+	    <div id="middle"><img src="img/linkedin.jpg"><br>
+	      GRID HERE<br>
+	      <div id="linkedinGrid"></div>
+	      <input type="submit" name="login2" value="Login">
+	      </div>
+	    <div id="right"><img src="img/scotiabank.jpg"><br>
+	      GRID HERE<br>
+	      <div id="scotiabankGrid"></div>
+	      <input type="submit" name="login3" value="Login">
+	     </div>
+	    </div>
+</div></div>
+<br>
+<div id="container">
+<a href="">Create a password</a>
+</div>
+</div>
+
+<input type="hidden" name="userPwd" value="justTestingPwd">
+</div>
+</div>
+
+<br><br><br>
+<center>CSCI 4169/6307 Usable Security and Privacy 2014</center>
+
+</form>
+</body>
+</html>
+

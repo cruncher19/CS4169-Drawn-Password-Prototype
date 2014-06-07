@@ -19,7 +19,7 @@ function drawingCanvas(divId, canvasWidth, canvasHeight){
 
     var canvasDiv = document.getElementById(divId);
     if(!canvasDiv) {
-        throw "Error: "+divId+" not found";
+        throw "Error: #canvasDiv not found";
     }
     this.canvas = document.createElement('canvas');
     this.canvas.setAttribute('width', canvasWidth);
@@ -38,7 +38,7 @@ function drawingCanvas(divId, canvasWidth, canvasHeight){
 
     // Add mouse event listeners to the canvas
     function addCanvasListeners(divId) {
-        console.log('.'+divId+' > #canvas');
+        console.log('#'+divId+' > #canvas');
         $('#'+divId+' > #canvas').mousedown(function(e){
             var mouseX = e.pageX - this.offsetLeft;
             var mouseY = e.pageY - this.offsetTop;

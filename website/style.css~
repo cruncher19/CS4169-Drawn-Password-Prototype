@@ -1,0 +1,45 @@
+body {
+    background:#848484;
+    margin:0;
+    padding:0;
+
+}
+
+#header {
+    width:100%;
+    min-height:40pt;
+    background:#0B3861;
+    color:white;
+    font-weight:bold;
+    margin:0;
+    overflow:hidden;
+}
+
+#header ul {
+        list-style: none;
+        margin-top:2px;
+	float:right;
+
+}
+
+#header li {
+        float: left;
+        margin: 10pt ;
+}
+
+#header li a:hover {
+    text-decoration:underline;
+}
+
+#content {
+        clear: both;
+        color:#0B3861;;
+        background:#E0ECF8;
+        text-align:left;
+        width:70%;
+        margin-left:auto;
+        margin-right:auto;
+	padding:0;
+	margin-top:-3pt;
+
+}
