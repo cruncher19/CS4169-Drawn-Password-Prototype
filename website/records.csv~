@@ -1,4 +1,0 @@
-timestamp,user,passId,attemptDuration(milliseconds),attemptcount,sucess/fail
-2014-06-17 18:23:40,tanja,/1/4,5367,-1,success,facebook
-2014-06-17 18:26:08,tanja,/5/9,1400,1,fail,facebook
-2014-06-17 18:29:35,tanja,/1/4,8731,2,success,facebook
