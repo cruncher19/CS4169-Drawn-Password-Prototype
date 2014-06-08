@@ -54,7 +54,6 @@
 
         function login(indicatorDiv, username, password, attemptDuration, attemptCount, drawingBox, drawingGrid) {
           $.post( "login.php",{u: username, p: password, pwd: drawingBox, attemptDuration: attemptDuration, attemptCount: attemptCount }).done(function( data ) {
-            alert(data);
             var regex = /<.*>\n(.*),(.*)/m;
             var results = regex.exec(data);
             if(!results){
@@ -153,7 +152,7 @@
 </div></div>
 <br>
 <div id="container">
-<a href="new.html">New user? Sign up</a>
+<a href="register.html">New user? Sign up</a>
 </div>
 </div>
 
