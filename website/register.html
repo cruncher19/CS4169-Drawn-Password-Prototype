@@ -64,7 +64,7 @@ window.onload = function() {
           } else {
             setFailed(indicatorDiv);
             drawingGrid.clearDrawing();
-            alert("Registration Failed, Username Taken");
+            alert("Registration Failed, username already taken for that password");
           }
         }
       });
@@ -110,11 +110,14 @@ window.onload = function() {
 <br>
 <center><div style="font-weight:bold;size:1.2em;">Usability of grid drawing passwords</div></center>
 <br><br>
+<center><div style="font-weight:bold; size: 1.5em;">Registration</div></center>
+<br><br>
 <div id="container">
   <div id="row">
     <div id="middle">
-      Please register three new grid passwords<br><br>
-      Username: <input id="username" type="text" name="userName" value="">
+      Choose a Username: <input id="username" type="text" name="userName" value="">
+      <br><br>
+      Please register three new grid passwords
       <div id="container">
   <div id="row">
 
