@@ -48,5 +48,5 @@ if($u) {
 }
 
 // echo $u.",".$r.",".$p.",".$passId.",".$wat.",".$pwd;
-echo $u.",".$r.";
+echo $u.",".$r;
 ?>
