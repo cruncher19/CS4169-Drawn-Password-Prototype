@@ -1,0 +1,313 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="../style.css">
+<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../js/drawingCanvas.js"></script>
+<script type="text/javascript">    
+    window.onload = function() {
+        var facebookGrid   = new drawingCanvas("facebookGrid", 300, 300);
+        var linkedinGrid   = new drawingCanvas("linkedinGrid", 300, 300);
+        var scotiabankGrid = new drawingCanvas("scotiabankGrid", 300, 300);
+        var rbcGrid        = new drawingCanvas("rbcGrid", 300, 300);
+        var ebayGrid       = new drawingCanvas("ebayGrid", 300, 300);
+        var googleGrid     = new drawingCanvas("googleGrid", 300, 300);
+        var msnGrid        = new drawingCanvas("msnGrid", 300, 300);
+        var yahooGrid      = new drawingCanvas("yahooGrid", 300, 300);
+        var dalGrid        = new drawingCanvas("dalGrid", 300, 300);
+
+        var facebookAttemptCount   = 0;
+        var linkedinAttemptCount   = 0;
+        var scotiabankAttemptCount = 0;
+        var rbcAttemptCount        = 0;
+        var ebayAttemptCount       = 0;
+        var googleAttemptCount     = 0;
+        var msnAttemptCount        = 0;
+        var yahooAttemptCount      = 0;
+        var dalAttemptCount        = 0;
+
+        // Event listeners for the facebook grid
+        document.getElementById('facebookGridSubmit').addEventListener('click', function() {
+          facebookAttemptCount++;
+          var indicatorDiv = findIndicatorDiv(this);
+          var username     = document.getElementById("username").value;
+          var password     = facebookGrid.generatePassword();
+          var attemptDuration = facebookGrid.getDrawingDuration();
+          login(indicatorDiv, username, password, attemptDuration, facebookAttemptCount, "facebook", facebookGrid);
+        }, false);
+        document.getElementById('facebookGridClear').addEventListener('click', function() {
+            facebookGrid.clearDrawing();
+        }, false);
+
+        // Event listeners for the linkedin grid
+        document.getElementById('linkedinGridSubmit').addEventListener('click', function() {
+          linkedinAttemptCount++;
+          var indicatorDiv = findIndicatorDiv(this);
+          var username     = document.getElementById("username").value;
+          var password     = linkedinGrid.generatePassword();
+          var attemptDuration = linkedinGrid.getDrawingDuration();
+          login(indicatorDiv, username, password, attemptDuration, linkedinAttemptCount, "linkedin", linkedinGrid);
+        }, false);
+        document.getElementById('linkedinGridClear').addEventListener('click', function() {
+            linkedinGrid.clearDrawing();
+        }, false);
+
+        // Event listeners for the scotiabank grid
+        document.getElementById('scotiabankGridSubmit').addEventListener('click', function() {
+          scotiabankAttemptCount++;
+          var indicatorDiv = findIndicatorDiv(this);
+          var username     = document.getElementById("username").value;
+          var password     = scotiabankGrid.generatePassword();
+          var attemptDuration = scotiabankGrid.getDrawingDuration();
+          login(indicatorDiv, username, password, attemptDuration, scotiabankAttemptCount, "scotiabank", scotiabankGrid);
+        }, false);
+        document.getElementById('scotiabankGridClear').addEventListener('click', function() {
+            scotiabankGrid.clearDrawing();
+        }, false);
+
+        // Event listeners for the rbc grid
+        document.getElementById('rbcGridSubmit').addEventListener('click', function() {
+          rbcAttemptCount++;
+          var indicatorDiv = findIndicatorDiv(this);
+          var username     = document.getElementById("username").value;
+          var password     = rbcGrid.generatePassword();
+          var attemptDuration = rbcGrid.getDrawingDuration();
+          login(indicatorDiv, username, password, attemptDuration, rbcAttemptCount, "rbc", rbcGrid);
+        }, false);
+        document.getElementById('rbcGridClear').addEventListener('click', function() {
+            rbcGrid.clearDrawing();
+        }, false);
+
+        // Event listeners for the ebay grid
+        document.getElementById('ebayGridSubmit').addEventListener('click', function() {
+          ebayAttemptCount++;
+          var indicatorDiv = findIndicatorDiv(this);
+          var username     = document.getElementById("username").value;
+          var password     = ebayGrid.generatePassword();
+          var attemptDuration = ebayGrid.getDrawingDuration();
+          login(indicatorDiv, username, password, attemptDuration, ebayAttemptCount, "ebay", ebayGrid);
+        }, false);
+        document.getElementById('ebayGridClear').addEventListener('click', function() {
+            ebayGrid.clearDrawing();
+        }, false);
+
+        // Event listeners for the google grid
+        document.getElementById('googleGridSubmit').addEventListener('click', function() {
+          googleAttemptCount++;
+          var indicatorDiv = findIndicatorDiv(this);
+          var username     = document.getElementById("username").value;
+          var password     = googleGrid.generatePassword();
+          var attemptDuration = googleGrid.getDrawingDuration();
+          login(indicatorDiv, username, password, attemptDuration, googleAttemptCount, "google", googleGrid);
+        }, false);
+        document.getElementById('googleGridClear').addEventListener('click', function() {
+            googleGrid.clearDrawing();
+        }, false);
+
+        // Event listeners for the msn grid
+        document.getElementById('msnGridSubmit').addEventListener('click', function() {
+          msnAttemptCount++;
+          var indicatorDiv = findIndicatorDiv(this);
+          var username     = document.getElementById("username").value;
+          var password     = msnGrid.generatePassword();
+          var attemptDuration = msnGrid.getDrawingDuration();
+          login(indicatorDiv, username, password, attemptDuration, msnAttemptCount, "msn", msnGrid);
+        }, false);
+        document.getElementById('msnGridClear').addEventListener('click', function() {
+            msnGrid.clearDrawing();
+        }, false);
+
+        // Event listeners for the yahoo grid
+        document.getElementById('yahooGridSubmit').addEventListener('click', function() {
+          yahooAttemptCount++;
+          var indicatorDiv = findIndicatorDiv(this);
+          var username     = document.getElementById("username").value;
+          var password     = yahooGrid.generatePassword();
+          var attemptDuration = yahooGrid.getDrawingDuration();
+          login(indicatorDiv, username, password, attemptDuration, yahooAttemptCount, "yahoo", yahooGrid);
+        }, false);
+        document.getElementById('yahooGridClear').addEventListener('click', function() {
+            yahooGrid.clearDrawing();
+        }, false);
+
+        // Event listeners for the dal grid
+        document.getElementById('dalGridSubmit').addEventListener('click', function() {
+          dalAttemptCount++;
+          var indicatorDiv = findIndicatorDiv(this);
+          var username     = document.getElementById("username").value;
+          var password     = dalGrid.generatePassword();
+          var attemptDuration = dalGrid.getDrawingDuration();
+          login(indicatorDiv, username, password, attemptDuration, dalAttemptCount, "dal", dalGrid);
+        }, false);
+        document.getElementById('dalGridClear').addEventListener('click', function() {
+            dalGrid.clearDrawing();
+        }, false);
+
+
+
+        function login(indicatorDiv, username, password, attemptDuration, attemptCount, drawingBox, drawingGrid) {
+          $.post( "login.php",{u: username, p: password, pwd: drawingBox, attemptDuration: attemptDuration, attemptCount: attemptCount }).done(function( data ) {
+            var regex = /<.*>\n(.*),(.*)/m;
+            var results = regex.exec(data);
+            if(!results){
+              throw "malformed message from server";
+            }
+            var username = results[1];
+            var success  = results[2];
+            if(username == "null"){
+              alert("Invalid Username, you need to register!");
+            } else {
+              if(success == "success") {
+                setSuccessful(indicatorDiv);
+                drawingGrid.clearDrawing();
+              } else {
+                setFailed(indicatorDiv);
+                drawingGrid.clearDrawing();
+              }
+            }
+          });
+        }
+        function setFailed(div) {
+          div.style.backgroundColor = "#AD310B";
+          setTimeout(function() {
+            div.style.backgroundColor = "transparent";
+          }, 3000);
+        }
+        function setSuccessful(div) {
+          div.style.backgroundColor = "#24F01D";
+          setTimeout(function() {
+            div.style.backgroundColor = "transparent";
+          }, 3000);
+        }
+        function findIndicatorDiv(self){
+          var parent = self.parentNode;
+          var indicatorDiv = undefined;
+          var children = parent.childNodes;
+          for(var i=0; i<children.length; i++) {
+            if(children[i].className == "indicator") {
+              indicatorDiv = children[i];
+            }
+          }
+          return indicatorDiv;
+        }
+    }
+</script>
+</head>
+<body>
+<!-- <form method="post" name="pform" action="login.php"> -->
+  <div id="header">
+   <ul> 
+    <li>Home</li>
+    <li><a href="quest.html" style="color:white;text-decoration:none;">Questionnaire</a></li>
+    <li><a href="contact.html" style="color:white;text-decoration:none;">Contact</a></li>
+   </ul>
+  </div>
+<div id="content">
+<br>
+<center><div style="font-weight:bold;font-size:1.4em;">CSCI 4169/6307 Usable Security and Privacy</div></center>
+<br>
+<center><div style="font-weight:bold;size:1.2em;">Usability of grid drawing passwords</div></center>
+<br><br>
+<div id="container">
+  <div class="row">
+    <div id="middle">
+      Please login using your grid passwords<br><br>
+      Username: <input id="username" type="text" name="userName" value="">
+      <div id="container">
+	<div class="row">
+
+	  <div class="row">
+	    <div class="gridCol left"> 
+        <div class="indicator">
+          <img class="passImage" src="img/facebook.jpg"><br>
+        </div>
+        <input id="facebookGridClear" type="submit" value="Clear">
+        <div id="facebookGrid"></div>
+        <input id="facebookGridSubmit" type="submit" name="login1" value="Login">
+      </div>
+	    <div class="gridCol middle">
+        <div class="indicator">
+          <img class="passImage" src="img/linkedin.jpg"><br>
+        </div>
+        <input id="linkedinGridClear" type="submit" value="Clear">
+        <div id="linkedinGrid"></div>
+        <input id="linkedinGridSubmit" type="submit" name="login2" value="Login">
+      </div>
+	    <div class="gridCol right">
+        <div class="indicator">
+          <img class="passImage" src="img/scotiabank.jpg"><br>
+        </div>
+        <input id="scotiabankGridClear" type="submit" value="Clear">
+        <div id="scotiabankGrid"></div>
+        <input id="scotiabankGridSubmit" type="submit" name="login3" value="Login">
+      </div>
+    </div>
+    <div class="row">
+      <div class="gridCol left"> 
+        <div class="indicator">
+          <img class="passImage" src="img/rbc.gif"><br>
+        </div>
+        <input id="rbcGridClear" type="submit" value="Clear">
+        <div id="rbcGrid"></div>
+        <input id="rbcGridSubmit" type="submit" name="login1" value="Login">
+      </div>
+      <div class="gridCol middle">
+        <div class="indicator">
+          <img class="passImage" src="img/ebay.png"><br>
+        </div>
+        <input id="ebayGridClear" type="submit" value="Clear">
+        <div id="ebayGrid"></div>
+        <input id="ebayGridSubmit" type="submit" name="login2" value="Login">
+      </div>
+      <div class="gridCol right">
+        <div class="indicator">
+          <img class="passImage" src="img/google.png"><br>
+        </div>
+        <input id="googleGridClear" type="submit" value="Clear">
+        <div id="googleGrid"></div>
+        <input id="googleGridSubmit" type="submit" name="login3" value="Login">
+      </div>
+    </div>
+    <div class="row">
+      <div class="gridCol left"> 
+        <div class="indicator">
+          <img class="passImage" src="img/msn.gif"><br>
+        </div>
+        <input id="msnGridClear" type="submit" value="Clear">
+        <div id="msnGrid"></div>
+        <input id="msnGridSubmit" type="submit" name="login1" value="Login">
+      </div>
+      <div class="gridCol middle">
+        <div class="indicator">
+          <img class="passImage" src="img/yahoo.png"><br>
+        </div>
+        <input id="yahooGridClear" type="submit" value="Clear">
+        <div id="yahooGrid"></div>
+        <input id="yahooGridSubmit" type="submit" name="login2" value="Login">
+      </div>
+      <div class="gridCol right">
+        <div class="indicator">
+          <img class="passImage" src="img/dal.jpg"><br>
+        </div>
+        <input id="dalGridClear" type="submit" value="Clear">
+        <div id="dalGrid"></div>
+        <input id="dalGridSubmit" type="submit" name="login3" value="Login">
+      </div>
+    </div>
+</div></div>
+<br>
+<div id="container">
+<a href="register.html">New user? Sign up</a>
+</div>
+</div>
+
+<input type="hidden" name="userPwd" value="justTestingPwd">
+</div>
+</div>
+
+<br><br><br>
+<center>CSCI 4169/6307 Usable Security and Privacy 2014</center>
+
+<!-- </form> -->
+</body>
+</html>
+

@@ -18,6 +18,8 @@ function drawingCanvas(divId, canvasWidth, canvasHeight){
     this.startTime = undefined;
     this.paint;
 
+	this.quadrantNumbers = this.fillQuadrantNumbers(5);
+	
     var canvasDiv = document.getElementById(divId);
     if(!canvasDiv) {
         throw "Error: #canvasDiv not found";
@@ -214,8 +216,8 @@ drawingCanvas.prototype.generatePassword = function() {
 
         console.log(currentQuadrant);
 		
-		// The actual quadrant is simply the X quadrant * the Y quadrant
-        var passwordChar = (currentQuadrant[0] * currentQuadrant[1]).toString();
+		// The actual quadrant is simply the value of the quadrantNumebrs array at position [X][Y].
+        var passwordChar = (this.quadrantNumbers[currentQuadrant[0] - 1][currentQuadrant[1] - 1]).toString();
 
         console.log(passwordChar);
 
@@ -315,4 +317,32 @@ drawingCanvas.prototype.calculateQuadrant = function(width, height, x, y) {
     var jointQuadrant = [pointQuadX, pointQuadY];
 
     return jointQuadrant;
+}
+
+// Simple function to create and fill a 2D grid with the numbers of each quadrant
+drawingCanvas.prototype.fillQuadrantNumbers = function(grid_size) {
+
+	var result = new Array(grid_size);
+	
+	for(var i = 0; i < grid_size; i ++)
+	{
+		result[i] = new Array(grid_size);
+	}
+
+	console.log(result);
+	
+	var count = 1;
+
+	for (var i = 0; i < grid_size; i ++)
+	{
+		for(var j = 0; j < grid_size; j ++)
+		{
+			result[i][j] = count++;
+		}
+	}
+	
+	console.log(result);
+	
+	return result;
+
 }
