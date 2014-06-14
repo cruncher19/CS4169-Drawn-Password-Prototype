@@ -11,6 +11,7 @@
         document.getElementById('facebookGridSubmit').addEventListener('click', function() {
         	var drawingInfo = facebookGrid.getPositions();
         	console.log(drawingInfo);
+            facebookGrid.generatePassword();
         	// Do some calculations to get a password from the drawingInfo
         	// probably want to  put your code into a function, either in its own file
         	// or as a part of the drawingCanvas itself, if you go this route you should 

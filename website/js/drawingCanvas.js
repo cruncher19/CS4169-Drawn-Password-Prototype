@@ -107,3 +107,123 @@ drawingCanvas.prototype.getPositions = function() {
     }
     return positions;
 }
+
+// Function to generate a password given the drawing coordinates on the grid
+drawingCanvas.prototype.generatePassword = function() {
+    var width = this.canvas.width;
+    var height = this.canvas.height;
+
+    var password = "";
+
+	// As ClickX and ClickY should both have the same number of items, either array could have
+	// been used to count
+    for (var i = 0; i < this.clickX.length; i ++)
+    {
+		// Determines the quadrant of the current (X, Y) coordinate. Returns a 2-element array containing
+		// the vertical quadrant and horizontal quadrant
+        var currentQuadrant = this.calculateQuadrant(width, height, this.clickX[i], this.clickY[i]);
+
+        console.log(currentQuadrant);
+		
+		// The actual quadrant is simply the X quadrant * the Y quadrant
+        var passwordChar = (currentQuadrant[0] * currentQuadrant[1]).toString();
+
+        console.log(passwordChar);
+
+		// Checks to see if a coordinate from this quadrant has already been added to the password
+        if(password.indexOf(passwordChar) == -1) {
+			// Concatenates the new quadrant onto the password. Each quadrant is separated by a "/"
+			// but this can be changed later on in some fashion.
+            password = password.concat("/", passwordChar);
+        }
+    }
+
+	// The final password should look something like "/1/3/4/11/14/8/22/17" where each number
+	// corresponds to a quadrant in the grid.
+    console.log(password);
+
+    //alert("Password generated is: " + password);
+
+    return password;
+}
+
+// Function to determine with quadrant a given coordinate is in
+drawingCanvas.prototype.calculateQuadrant = function(width, height, x, y) {
+    
+	// Generates the boundaries for each quadrant in the horizontal axis
+	// This array should look something like {100, 200, 300, 400} for a grid
+	// of size 500x500. i.e. less than 100 is quad 1, 100 to 200 is quad 2 and 
+	// so on for 5 quadrants.
+	var quadrantsX = new Array();
+    for(var i = 0; i < 4; i ++) {
+        quadrantsX[i] = (width / 5) * (i + 1);
+    }
+
+    console.log(quadrantsX);
+
+	// Generates the boundaries for each quadrant in the vertical axis
+    var quadrantsY = new Array();
+    for(var i = 0; i < 4; i ++) {
+        quadrantsY[i] = (height / 5) * (i + 1);
+    }
+
+    console.log(quadrantsY);
+
+	// variables for the calculated quadrants for the X and Y coordinates.
+    var pointQuadX;
+    var pointQuadY;
+
+	// Calculates X quad
+    for (var i = 0; i < 4; i ++) {
+        if(i == 0)
+        {
+            if(x < quadrantsX[i])
+            {
+                pointQuadX = 1;
+                break;
+            }
+        }
+
+        else if(x > quadrantsX[i]) {
+            if(i == 3) {
+                pointQuadX = i + 2;
+            }
+            continue
+        }
+        
+        else {
+            pointQuadX = i + 1;
+            break;
+        }
+    }
+
+	// Calculates Y quad
+    for (var i = 0; i < 4; i ++) {
+        if(i == 0)
+        {
+            if(y < quadrantsY[i])
+            {
+                pointQuadY = 1;
+                break;
+            }
+        }
+
+        else if(y > quadrantsY[i]) {
+            if(i == 3) {
+                pointQuadY = i + 2;
+            }
+            continue
+        }
+        
+        else {
+            pointQuadY = i + 1;
+            break;
+        }
+    }
+
+    console.log(x + " " + y);
+
+    var jointQuadrant = [pointQuadX, pointQuadY];
+
+    return jointQuadrant;
+}
