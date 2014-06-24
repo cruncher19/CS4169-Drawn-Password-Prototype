@@ -17,7 +17,7 @@
         document.getElementById('facebookGridSubmit').addEventListener('click', function() {
           facebookAttemptCount++;
           var indicatorDiv = findIndicatorDiv(this);
-          var username     = document.getElementById("username");
+          var username     = document.getElementById("username").value;
           var password     = facebookGrid.generatePassword();
           var attemptDuration = facebookGrid.getDrawingDuration();
           login(indicatorDiv, username, password, attemptDuration, facebookAttemptCount, "facebook", facebookGrid);
@@ -30,7 +30,7 @@
         document.getElementById('linkedinGridSubmit').addEventListener('click', function() {
           linkedinAttemptCount++;
           var indicatorDiv = findIndicatorDiv(this);
-          var username     = document.getElementById("username");
+          var username     = document.getElementById("username").value;
           var password     = linkedinGrid.generatePassword();
           var attemptDuration = linkedinGrid.getDrawingDuration();
           login(indicatorDiv, username, password, attemptDuration, linkedinAttemptCount, "linkedin", linkedinGrid);
@@ -43,7 +43,7 @@
         document.getElementById('scotiabankGridSubmit').addEventListener('click', function() {
           scotiabankAttemptCount++;
           var indicatorDiv = findIndicatorDiv(this);
-          var username     = document.getElementById("username");
+          var username     = document.getElementById("username").value;
           var password     = scotiabankGrid.generatePassword();
           var attemptDuration = scotiabankGrid.getDrawingDuration();
           login(indicatorDiv, username, password, attemptDuration, scotiabankAttemptCount, "scotiabank", scotiabankGrid);
@@ -53,8 +53,7 @@
         }, false);
 
         function login(indicatorDiv, username, password, attemptDuration, attemptCount, drawingBox, drawingGrid) {
-          $.post( "login.php",{u: username, p: password, pwd: drawingBox, attemptDuration: attemptDuration, attemptcount: attemptCount }).done(function( data ) {
-            alert("MESSAGE RECEIVED");
+          $.post( "login.php",{u: username, p: password, pwd: drawingBox, attemptDuration: attemptDuration, attemptCount: attemptCount }).done(function( data ) {
             var regex = /<.*>\n(.*),(.*)/m;
             var results = regex.exec(data);
             if(!results){
@@ -65,7 +64,7 @@
             if(username == "null"){
               alert("Invalid Username, you need to register!");
             } else {
-              if(success) {
+              if(success == "success") {
                 setSuccessful(indicatorDiv);
                 drawingGrid.clearDrawing();
               } else {
@@ -78,13 +77,13 @@
         function setFailed(div) {
           div.style.backgroundColor = "#AD310B";
           setTimeout(function() {
-            div.style.backgroundColor = "rgba(255,0,0,0.5)";
+            div.style.backgroundColor = "transparent";
           }, 3000);
         }
         function setSuccessful(div) {
           div.style.backgroundColor = "#24F01D";
           setTimeout(function() {
-            div.style.backgroundColor = "rgba(255,0,0,0.5)";
+            div.style.backgroundColor = "transparent";
           }, 3000);
         }
         function findIndicatorDiv(self){
@@ -153,7 +152,7 @@
 </div></div>
 <br>
 <div id="container">
-<a href="new.html">New user? Sign up</a>
+<a href="register.html">New user? Sign up</a>
 </div>
 </div>
 

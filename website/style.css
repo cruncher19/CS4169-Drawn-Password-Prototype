@@ -134,8 +134,7 @@ canvas {
 .indicator {
     width: 100%;
 }
-.indicator:hover {
-    background-color: #AD310B;
+.indicator{
     -webkit-transition: background-color 800ms linear;
     -moz-transition: background-color 800ms linear;
     -o-transition: background-color 800ms linear;
